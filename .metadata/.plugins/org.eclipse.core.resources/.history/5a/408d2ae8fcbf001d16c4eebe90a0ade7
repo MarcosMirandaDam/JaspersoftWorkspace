@@ -1,0 +1,218 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="PeliculasPorActor" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="f22d73ee-cf3e-4395-ace5-f859f1f69afa">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sakilaAdapter"/>
+	<parameter name="Identificador de autor" class="java.lang.Integer">
+		<parameterDescription><![CDATA[Muestra el identificador del autor]]></parameterDescription>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT a.actor_id, a.first_name, a.last_name, a.last_update, f.title
+FROM actor a
+INNER JOIN film_actor fa ON a.actor_id = fa.actor_id
+INNER JOIN film f ON fa.film_id = f.film_id
+WHERE a.actor_id= $P{Identificador de autor} 
+ORDER BY f.title]]>
+	</queryString>
+	<field name="actor_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="actor_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
+	</field>
+	<field name="first_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="first_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
+	</field>
+	<field name="last_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
+	</field>
+	<field name="last_update" class="java.sql.Timestamp">
+		<property name="com.jaspersoft.studio.field.label" value="last_update"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
+	</field>
+	<field name="title" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="title"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<sortField name="first_name" order="Descending"/>
+	<group name="first_name">
+		<groupExpression><![CDATA[$F{first_name}]]></groupExpression>
+	</group>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{first_name}]]></groupExpression>
+		<groupHeader>
+			<band height="37">
+				<textField>
+					<reportElement x="240" y="3" width="100" height="30" uuid="3f9f253e-a814-4faf-894c-59b3e7e29095"/>
+					<textElement>
+						<font fontName="Castellar" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{actor_id}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="350" y="3" width="100" height="30" uuid="ade137c6-3472-4d34-b8a6-a908f582fdbd"/>
+					<textElement>
+						<font fontName="Castellar" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{first_name}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement x="470" y="3" width="100" height="30" uuid="a2094382-4521-410d-9ab0-47c570a3253e"/>
+					<textElement>
+						<font fontName="Castellar" size="14"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{last_name}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="87" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="10" y="5" width="790" height="79" backcolor="#D97977" uuid="785d4761-73d8-4158-81a0-a2825b2facaa"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[PELÍCULAS POR ACTOR]]></text>
+			</staticText>
+			<image>
+				<reportElement x="20" y="10" width="80" height="70" uuid="3ebddd18-78de-460d-a169-e1139d8775f3"/>
+				<imageExpression><![CDATA["C:/Users/sssoc/Pictures/Iconos/cine.JPG"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="712" y="10" width="80" height="70" uuid="096a9d6d-55a8-4b5d-a6eb-54153fa8ea09"/>
+				<imageExpression><![CDATA["C:/Users/sssoc/Pictures/Iconos/cine.JPG"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="580" y="2" width="100" height="30" uuid="d9b713fa-77ac-490f-b308-d7852ce27c9f"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="692" y="2" width="100" height="30" uuid="72453a67-773e-42fa-9ce5-cf2bdb72f433"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="162" height="30" backcolor="#CCE8DE" uuid="d2d7f6a5-b0b6-477f-a8a3-7bf37f4e9f48">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cee73ae8-3d6b-4edf-8550-45932356d72b"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Blackadder ITC" size="24"/>
+				</textElement>
+				<text><![CDATA[actor_id]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="162" y="0" width="160" height="30" backcolor="#CCE8DE" uuid="808247d1-e8dd-4628-94e2-2c1cd89384db">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6719b289-cb08-4c68-a8bb-8cce67344e9f"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Blackadder ITC" size="24"/>
+				</textElement>
+				<text><![CDATA[first_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="322" y="0" width="160" height="30" backcolor="#CCE8DE" uuid="18b83722-9760-4739-be08-af18e1540169">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5606e7b2-3d5c-4254-9967-8a1baee6115c"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Blackadder ITC" size="24"/>
+				</textElement>
+				<text><![CDATA[last_name]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="482" y="0" width="160" height="30" backcolor="#CCE8DE" uuid="0cac943d-d7a9-4436-959d-5ff1a660d6c7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd34bcfc-7308-4767-aa73-b67f0dff843e"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Blackadder ITC" size="24"/>
+				</textElement>
+				<text><![CDATA[last_update]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="642" y="0" width="160" height="30" backcolor="#CCE8DE" uuid="41bac96f-e75b-49dc-8ca5-c0b93f77e7c7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f062ae30-cecc-43d5-8855-bdb788cdbb9e"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font fontName="Blackadder ITC" size="24"/>
+				</textElement>
+				<text><![CDATA[title]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="41" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="162" height="30" uuid="a9d8624d-22ec-4975-8081-3dac863db89d">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cee73ae8-3d6b-4edf-8550-45932356d72b"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{actor_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="162" y="0" width="160" height="30" uuid="dc53b4b2-9667-4aef-8f52-b5d5cfcd401b">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="6719b289-cb08-4c68-a8bb-8cce67344e9f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{first_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="322" y="0" width="160" height="30" uuid="ee7e2aae-0429-40c0-9a89-4482d39460b1">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="5606e7b2-3d5c-4254-9967-8a1baee6115c"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{last_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="482" y="0" width="160" height="30" uuid="183b71cc-0302-48e0-ac78-18cc433c6527">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="cd34bcfc-7308-4767-aa73-b67f0dff843e"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{last_update}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="642" y="0" width="160" height="30" uuid="8fce75cd-bb51-4ccb-9e92-2b43faf3ba21">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="f062ae30-cecc-43d5-8855-bdb788cdbb9e"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{title}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>

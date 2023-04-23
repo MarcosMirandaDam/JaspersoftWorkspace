@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informeTartaDuracionPeliculas" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="dd10bb31-cc8e-4f6d-939d-c96664400422">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sakilaAdapter"/>
+	<parameter name="Duracion" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT f.length DURACION, COUNT(f.film_id) PELICULAS
+FROM film f
+WHERE f.length< $P{Duracion} 
+group by f.length]]>
+	</queryString>
+	<field name="DURACION" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="DURACION"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="PELICULAS" class="java.lang.Long">
+		<property name="com.jaspersoft.studio.field.label" value="PELICULAS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="60" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="-20" y="0" width="595" height="56" backcolor="#BD7E7D" uuid="95388475-a842-4c15-83a2-1a69f2051935"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[PELICULAS POR DURACIÓN]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="318" splitType="Stretch">
+			<pie3DChart>
+				<chart evaluationTime="Report">
+					<reportElement x="20" y="0" width="540" height="318" uuid="17189007-3192-43ff-863a-0ed06ed823b4"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{DURACION}]]></keyExpression>
+					<valueExpression><![CDATA[$F{PELICULAS}]]></valueExpression>
+					<labelExpression><![CDATA["Nº películas:"+$F{PELICULAS}]]></labelExpression>
+				</pieDataset>
+				<pie3DPlot>
+					<plot/>
+					<itemLabel/>
+				</pie3DPlot>
+			</pie3DChart>
+		</band>
+	</summary>
+</jasperReport>

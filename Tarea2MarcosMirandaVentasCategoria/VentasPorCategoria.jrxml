@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="VentasPorCategoria" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="aba685c5-57b3-4f8b-9c16-03860d44b789">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sakilaAdapter"/>
+	<queryString language="SQL">
+		<![CDATA[Select c.name CATEGORIA, sum(p.amount) VENTAS from film f 
+inner join film_category fc on f.film_id = fc.film_id 
+inner join category c on fc.category_id = c.category_id
+inner join inventory i on i.film_id = f.film_id
+inner join rental r on i.inventory_id= r.inventory_id
+inner join payment p on r.rental_id= p.rental_id
+group by c.name
+order by c.name;]]>
+	</queryString>
+	<field name="CATEGORIA" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CATEGORIA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="category"/>
+	</field>
+	<field name="VENTAS" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="VENTAS"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="-10" y="0" width="800" height="56" backcolor="#A35DD9" uuid="054ed9ca-c23f-4c1c-b67f-5fc6f2f83fed"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[RELACIÓN DE VENTAS POR CATEGORIA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<summary>
+		<band height="277" splitType="Stretch">
+			<pieChart>
+				<chart evaluationTime="Report">
+					<reportElement x="0" y="0" width="790" height="275" uuid="2a8c757d-2b2f-4cc3-8cb8-ba2dfc556f92"/>
+					<chartTitle/>
+					<chartSubtitle/>
+					<chartLegend/>
+				</chart>
+				<pieDataset>
+					<dataset resetType="Report"/>
+					<keyExpression><![CDATA[$F{CATEGORIA}]]></keyExpression>
+					<valueExpression><![CDATA[$F{VENTAS}]]></valueExpression>
+					<labelExpression><![CDATA[""+$F{VENTAS} +"€"]]></labelExpression>
+				</pieDataset>
+				<piePlot>
+					<plot/>
+					<itemLabel/>
+				</piePlot>
+			</pieChart>
+		</band>
+	</summary>
+</jasperReport>

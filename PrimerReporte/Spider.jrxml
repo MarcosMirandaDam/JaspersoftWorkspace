@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Spider" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="770b1937-89aa-4caa-9f77-69f14aa2dda8">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sakilaAdapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT  
+
+    c.name, 
+
+    SUM(p.amount), 
+
+    DATE_FORMAT(p.payment_date, '%b-%Y') fecha_alquileres 
+
+FROM 
+
+    payment p, 
+
+    category c, 
+
+    film_category fc, 
+
+    rental r, 
+
+    inventory i 
+
+WHERE 
+
+    p.rental_id = r.rental_id 
+
+        AND r.inventory_id = i.inventory_id 
+
+        AND i.film_id = fc.film_id 
+
+        AND fc.category_id = c.category_id 
+
+GROUP BY fecha_alquileres , name 
+
+ORDER BY fecha_alquileres]]>
+	</queryString>
+	<field name="name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="category"/>
+	</field>
+	<field name="SUM(p.amount)" class="java.math.BigDecimal">
+		<property name="com.jaspersoft.studio.field.label" value="SUM(p.amount)"/>
+	</field>
+	<field name="fecha_alquileres" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="fecha_alquileres"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="-10" y="10" width="570" height="60" forecolor="#F0E6E6" backcolor="#F0817F" uuid="ad735ef9-dcba-40ba-8b43-0402bcca2e82"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[VENTAS POR CATEGORIA]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="48" splitType="Stretch">
+			<textField>
+				<reportElement x="260" y="10" width="300" height="30" uuid="80a83ff3-f187-4066-8f5d-f3ac3c00f195"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font isBold="true"/>
+				</textElement>
+				<textFieldExpression><![CDATA[DATEFORMAT(NOW(), "d' de 'MMMM' del 'YYYY, hh:mm:ss")]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<summary>
+		<band height="240" splitType="Stretch">
+			<componentElement>
+				<reportElement x="0" y="0" width="560" height="240" uuid="80374ea3-9d78-4cd1-a9f1-4382d3c7bae3"/>
+				<sc:spiderChart xmlns:sc="http://jasperreports.sourceforge.net/jasperreports/components" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports/components http://jasperreports.sourceforge.net/xsd/components.xsd">
+					<sc:chartSettings>
+						<chartTitle/>
+						<chartSubtitle/>
+						<chartLegend/>
+					</sc:chartSettings>
+					<sc:spiderDataset>
+						<dataset resetType="Report"/>
+						<categorySeries>
+							<seriesExpression><![CDATA[$F{fecha_alquileres}]]></seriesExpression>
+							<categoryExpression><![CDATA[$F{name}]]></categoryExpression>
+							<valueExpression><![CDATA[$F{SUM(p.amount)}]]></valueExpression>
+							<labelExpression><![CDATA[$F{name}]]></labelExpression>
+						</categorySeries>
+					</sc:spiderDataset>
+					<sc:spiderPlot isWebFilled="true"/>
+				</sc:spiderChart>
+			</componentElement>
+		</band>
+	</summary>
+</jasperReport>

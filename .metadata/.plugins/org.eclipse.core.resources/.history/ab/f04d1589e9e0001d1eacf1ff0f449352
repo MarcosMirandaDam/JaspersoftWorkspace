@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="EventosJuezDeterminadoParametro" pageWidth="595" pageHeight="842" columnWidth="535" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="e7eebaa4-068b-407f-bf7a-d4c2e72a1292">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="DataAdapter.xml"/>
+	<style name="Title" fontName="Arial" fontSize="26" isBold="true"/>
+	<style name="SubTitle" forecolor="#666666" fontName="Arial" fontSize="18"/>
+	<style name="Column header" forecolor="#666666" fontName="Arial" fontSize="12" isBold="true"/>
+	<style name="Detail" fontName="Arial" fontSize="12"/>
+	<parameter name="Nombre Juez" class="java.lang.String">
+		<defaultValueExpression><![CDATA[$F{juez}]]></defaultValueExpression>
+	</parameter>
+	<queryString language="SQL">
+		<![CDATA[SELECT nombrePrueba,clasePrueba,fecha,lugarPrueba,juez
+FROM MyDogId_2.Evento
+WHERE juez='Ana Paola']]>
+	</queryString>
+	<field name="nombrePrueba" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="nombrePrueba"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evento"/>
+	</field>
+	<field name="clasePrueba" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="clasePrueba"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evento"/>
+	</field>
+	<field name="fecha" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="fecha"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evento"/>
+	</field>
+	<field name="lugarPrueba" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="lugarPrueba"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evento"/>
+	</field>
+	<field name="juez" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="juez"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="Evento"/>
+	</field>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="70" splitType="Stretch">
+			<image>
+				<reportElement x="275" y="0" width="300" height="64" uuid="d7cb9de5-f1d6-4e9a-8441-72f5e2127742"/>
+				<imageExpression><![CDATA["leaf_banner_green.png"]]></imageExpression>
+			</image>
+			<staticText>
+				<reportElement style="Title" x="0" y="13" width="263" height="33" uuid="3eb8e1ab-7e38-4368-89db-62b6501a8c67"/>
+				<textElement verticalAlignment="Middle"/>
+				<text><![CDATA[Eventos de Belleza]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="SubTitle" x="100" y="46" width="174" height="22" uuid="0b5308cc-82cf-49a0-8011-6f875d4c5e32"/>
+				<text><![CDATA[Definido por juez]]></text>
+			</staticText>
+		</band>
+	</title>
+	<pageHeader>
+		<band splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="51" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="35" width="555" height="1" uuid="d69c6691-e92e-45c5-bf2d-c1dc15dabb91"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<staticText>
+				<reportElement style="Column header" x="0" y="36" width="138" height="15" uuid="6cde6a93-991f-4b6f-aac5-008b50ce1377">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b6e0313e-7eaa-41b6-a7c3-0305d5d7e4dc"/>
+				</reportElement>
+				<text><![CDATA[nombrePrueba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="138" y="36" width="138" height="15" uuid="62f64f59-0d98-4f61-8527-ab184bf2c4b8">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0b5f2d0a-74bf-420c-bf56-00eae67fada0"/>
+				</reportElement>
+				<text><![CDATA[clasePrueba]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="276" y="36" width="138" height="15" uuid="762b6aa9-4476-4eed-8fc1-22b695933774">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07b45137-57a3-4d09-b179-e9453d7af5d5"/>
+				</reportElement>
+				<text><![CDATA[fecha]]></text>
+			</staticText>
+			<staticText>
+				<reportElement style="Column header" x="414" y="36" width="138" height="15" uuid="25271c2d-ad8b-4f66-97e2-82354f564eb5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e599499-70cc-47b2-a9ea-b693b77128d1"/>
+				</reportElement>
+				<text><![CDATA[lugarPrueba]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="180" y="6" width="200" height="30" uuid="e05b486d-5d51-4057-a07e-bc62aaf940a4"/>
+				<textElement>
+					<font size="20"/>
+				</textElement>
+				<textFieldExpression><![CDATA[$P{Nombre Juez}]]></textFieldExpression>
+			</textField>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="46" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="15" width="555" height="1" uuid="f367c019-9cb7-431c-8713-5a96f9b889aa"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+			<textField>
+				<reportElement style="Detail" x="0" y="20" width="138" height="15" uuid="741f3df2-9a20-4ec7-8e0a-7449336d43f5">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="b6e0313e-7eaa-41b6-a7c3-0305d5d7e4dc"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{nombrePrueba}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="138" y="20" width="138" height="15" uuid="72124519-97c0-4d72-a7cd-fba11de1a979">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0b5f2d0a-74bf-420c-bf56-00eae67fada0"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{clasePrueba}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="276" y="20" width="138" height="15" uuid="a33a76df-5641-454d-ba0b-a4f6fbd9387c">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="07b45137-57a3-4d09-b179-e9453d7af5d5"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{fecha}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement style="Detail" x="414" y="20" width="138" height="15" uuid="ba0dcf8a-6c01-463d-b947-c995dae27ad0">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="0e599499-70cc-47b2-a9ea-b693b77128d1"/>
+				</reportElement>
+				<textFieldExpression><![CDATA[$F{lugarPrueba}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch">
+			<line>
+				<reportElement positionType="FixRelativeToBottom" x="0" y="3" width="555" height="1" uuid="02519f40-8679-4e40-a1f1-699bc025a206"/>
+				<graphicElement>
+					<pen lineWidth="0.5" lineColor="#999999"/>
+				</graphicElement>
+			</line>
+		</band>
+	</columnFooter>
+	<pageFooter>
+		<band height="20" splitType="Stretch">
+			<textField>
+				<reportElement style="Column header" x="433" y="0" width="80" height="20" uuid="6f13e17d-4b46-4ede-ab63-9d2685ec9c16"/>
+				<textElement textAlignment="Right">
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA["Page "+$V{PAGE_NUMBER}+" of"]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement style="Column header" x="513" y="0" width="40" height="20" uuid="6857db7e-824a-4cda-b8dc-fe5c95aca145"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[" " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField pattern="EEEEE dd MMMMM yyyy">
+				<reportElement style="Column header" x="0" y="0" width="197" height="20" uuid="ef9fc35f-c45f-4ec6-a5cc-ec2020109ea7"/>
+				<textElement>
+					<font size="10" isBold="false"/>
+				</textElement>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band splitType="Stretch"/>
+	</summary>
+</jasperReport>

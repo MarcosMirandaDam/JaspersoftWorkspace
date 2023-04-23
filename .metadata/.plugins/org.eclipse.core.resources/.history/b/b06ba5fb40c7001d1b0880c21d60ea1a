@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="Tarea1" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="38b623e3-42fa-4e47-99c4-9e1614953cba">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w1" value="232"/>
+	<property name="com.jaspersoft.studio.data.sql.SQLQueryDesigner.sash.w2" value="757"/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sakilaAdapter"/>
+	<parameter name="cityParameter" class="java.lang.String"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT f.film_id ID_PELICULA,f.title TITULO,f.length DURACION,(f.release_year) ESTRENO,ci.city CIUDAD
+FROM film f
+inner join inventory i on i.film_id = f.film_id
+inner join rental r on r.inventory_id = i.inventory_id
+inner join customer c on r.customer_id= c.customer_id
+inner join address a on c.address_id = a.address_id
+inner join city ci on ci.city_id= a.city_id
+where ci.city=  $P{cityParameter} 
+order by ciudad, titulo]]>
+	</queryString>
+	<field name="ID_PELICULA" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="ID_PELICULA"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="TITULO" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="TITULO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="DURACION" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="DURACION"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="ESTRENO" class="java.sql.Date">
+		<property name="com.jaspersoft.studio.field.label" value="ESTRENO"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="film"/>
+	</field>
+	<field name="CIUDAD" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="CIUDAD"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="city"/>
+	</field>
+	<sortField name="CIUDAD" order="Descending"/>
+	<variable name="ID_PELICULA1" class="java.lang.Integer" calculation="Count">
+		<variableExpression><![CDATA[$F{ID_PELICULA}]]></variableExpression>
+	</variable>
+	<group name="CIUDAD">
+		<groupExpression><![CDATA[$F{CIUDAD}]]></groupExpression>
+	</group>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{CIUDAD}]]></groupExpression>
+		<groupHeader>
+			<band height="50">
+				<textField>
+					<reportElement x="180" y="10" width="200" height="30" uuid="29c398ba-7150-4758-a196-8c0f31291982"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle">
+						<font size="20"/>
+					</textElement>
+					<textFieldExpression><![CDATA[$F{CIUDAD}]]></textFieldExpression>
+				</textField>
+				<textField>
+					<reportElement stretchType="ContainerBottom" x="0" y="10" width="60" height="30" uuid="f683f4a7-69b7-4468-af4a-ea4529e316e6"/>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$P{cityParameter}]]></textFieldExpression>
+				</textField>
+				<line>
+					<reportElement x="180" y="45" width="200" height="1" uuid="8695f060-e718-4c99-b43b-7628c71deec8"/>
+				</line>
+			</band>
+		</groupHeader>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="74" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="-10" y="0" width="570" height="56" backcolor="#BD7E7D" uuid="34f0b243-0ede-47e1-a5f5-e25420570076"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="24"/>
+				</textElement>
+				<text><![CDATA[PELÍCULAS ALQUILADAS POR CIUDAD]]></text>
+			</staticText>
+			<image>
+				<reportElement x="0" y="5" width="49" height="64" uuid="4cc148c7-9114-4a2f-95ab-48acb41e453b"/>
+				<imageExpression><![CDATA["C:/Users/sssoc/Pictures/avatarMarcos.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="506" y="4" width="49" height="67" uuid="fa925349-a13c-4fe8-9569-93420992c1f9"/>
+				<imageExpression><![CDATA["C:/Users/sssoc/Pictures/Iconos/cine.JPG"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="47" splitType="Stretch">
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="350" y="10" width="100" height="15" uuid="a608fdf9-8a69-4d56-b10a-056f1f3ecb68"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="460" y="8" width="100" height="17" uuid="9aabd14b-76ad-4d58-8bde-095499eefe15"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<columnHeader>
+		<band height="31" splitType="Stretch">
+			<staticText>
+				<reportElement x="0" y="0" width="220" height="30" uuid="ab6c481c-91e8-43e5-9d51-75c0b7cd0b89">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c124eb92-4fc2-469b-ac5d-f05678eee298"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[TITULO]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="0" width="130" height="30" uuid="12ada065-cde5-4260-9d66-d2d4c7192470">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4a1d3e5-df80-4c84-849f-7665ec290f0d"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[DURACION]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="400" y="0" width="155" height="30" uuid="d2d7c04b-03b3-41ec-b891-e5294eb988fd">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fbe3e7a5-fec9-4076-bb39-19439bc9cc8f"/>
+				</reportElement>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Double"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="14" isBold="true"/>
+				</textElement>
+				<text><![CDATA[ESTRENO]]></text>
+			</staticText>
+		</band>
+	</columnHeader>
+	<detail>
+		<band height="40" splitType="Stretch">
+			<textField>
+				<reportElement x="0" y="0" width="220" height="30" uuid="d8a589c4-697f-47c3-b3f4-a982328885b7">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c124eb92-4fc2-469b-ac5d-f05678eee298"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{TITULO}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="240" y="0" width="130" height="30" uuid="f6ee0efb-a506-465d-875e-e029c73b786e">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="c4a1d3e5-df80-4c84-849f-7665ec290f0d"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{DURACION}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="400" y="0" width="155" height="30" printWhenGroupChanges="Group1" uuid="b82b1774-3347-4eaa-9692-6a37b6320a37">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="fbe3e7a5-fec9-4076-bb39-19439bc9cc8f"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{ESTRENO}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch">
+			<textField>
+				<reportElement x="420" y="10" width="59" height="30" uuid="ead5b799-007a-4682-ae42-973dac5d662e"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Pag " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="480" y="10" width="70" height="30" uuid="886c86d7-1b7f-4ff5-9fe8-4f62d662010d"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" de " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="55" splitType="Stretch">
+			<textField>
+				<reportElement x="100" y="0" width="100" height="30" uuid="704087c9-c635-4bdb-80e8-aa9dab2281b7"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$V{ID_PELICULA1}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="0" y="0" width="100" height="30" uuid="e74179bf-a9e7-4a77-8b40-c00054ddc10c"/>
+				<box>
+					<pen lineWidth="1.0" lineStyle="Dashed"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<text><![CDATA[TOTAL PELICULAS]]></text>
+			</staticText>
+		</band>
+	</summary>
+</jasperReport>

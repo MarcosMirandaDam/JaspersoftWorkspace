@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Created with Jaspersoft Studio version 6.12.2.final using JasperReports Library version 6.12.2-75c5e90a222ab406e416cbf590a5397028a52de3  -->
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="informeActor" pageWidth="842" pageHeight="595" orientation="Landscape" columnWidth="802" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20" uuid="8c54b467-84ae-4171-ad62-52a88be0122c">
+	<property name="com.jaspersoft.studio.data.sql.tables" value=""/>
+	<property name="com.jaspersoft.studio.data.defaultdataadapter" value="sakilaAdapter"/>
+	<queryString language="SQL">
+		<![CDATA[SELECT sakila.actor.actor_id,
+	sakila.actor.first_name,
+	sakila.actor.last_name
+FROM sakila.actor]]>
+	</queryString>
+	<field name="actor_id" class="java.lang.Integer">
+		<property name="com.jaspersoft.studio.field.label" value="actor_id"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
+	</field>
+	<field name="first_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="first_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
+	</field>
+	<field name="last_name" class="java.lang.String">
+		<property name="com.jaspersoft.studio.field.label" value="last_name"/>
+		<property name="com.jaspersoft.studio.field.tree.path" value="actor"/>
+	</field>
+	<group name="actor_id">
+		<groupExpression><![CDATA[$F{actor_id}]]></groupExpression>
+	</group>
+	<group name="first_name">
+		<groupExpression><![CDATA[$F{first_name}]]></groupExpression>
+	</group>
+	<group name="last_name">
+		<groupExpression><![CDATA[$F{last_name}]]></groupExpression>
+	</group>
+	<group name="Group1">
+		<groupExpression><![CDATA[$F{actor_id}]]></groupExpression>
+		<groupHeader>
+			<band height="52">
+				<textField>
+					<reportElement x="280" y="10" width="200" height="30" backcolor="#CF9C9B" uuid="09a19f1e-f4c1-40c5-880e-d3240699be12"/>
+					<box>
+						<pen lineWidth="1.0" lineStyle="Solid"/>
+					</box>
+					<textElement textAlignment="Center" verticalAlignment="Middle"/>
+					<textFieldExpression><![CDATA[$F{actor_id}]]></textFieldExpression>
+				</textField>
+			</band>
+		</groupHeader>
+		<groupFooter>
+			<band height="50"/>
+		</groupFooter>
+	</group>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="88" splitType="Stretch">
+			<staticText>
+				<reportElement mode="Opaque" x="0" y="5" width="800" height="79" backcolor="#D97977" uuid="f7615a66-2f8f-4998-ae71-2efa7db20aa8"/>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="26"/>
+				</textElement>
+				<text><![CDATA[RESUMEN DE ACTORES Y ACTRICES]]></text>
+			</staticText>
+			<image>
+				<reportElement x="10" y="10" width="70" height="74" uuid="f46c9335-a245-421a-8d26-f62843f2a678"/>
+				<imageExpression><![CDATA["C:/Users/sssoc/Pictures/avatarMarcos.jpg"]]></imageExpression>
+			</image>
+			<image>
+				<reportElement x="720" y="10" width="72" height="70" uuid="f257919b-cd7f-421c-93af-1af5e3d85da1"/>
+				<imageExpression><![CDATA["C:/Users/sssoc/Pictures/Iconos/cine.JPG"]]></imageExpression>
+			</image>
+		</band>
+	</title>
+	<pageHeader>
+		<band height="85" splitType="Stretch">
+			<staticText>
+				<reportElement x="70" y="40" width="100" height="30" uuid="7c7a110c-2a5b-48ee-bfe2-1b9e64777888">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d8aa0912-4252-481e-96af-99f8551c20f7"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[ID ACTOR]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="240" y="40" width="240" height="30" uuid="69ce8ba7-07b9-425b-81c4-22adab0aec6a">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d8aa0912-4252-481e-96af-99f8551c20f7"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[NOMBRE ACTOR/ACTRIZ]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="560" y="40" width="100" height="30" uuid="6c36ef10-1a37-4512-a262-93df47d21173">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d8aa0912-4252-481e-96af-99f8551c20f7"/>
+				</reportElement>
+				<box>
+					<topPen lineWidth="1.0"/>
+					<leftPen lineWidth="1.0"/>
+					<bottomPen lineWidth="1.0"/>
+					<rightPen lineWidth="1.0"/>
+				</box>
+				<textElement textAlignment="Center" verticalAlignment="Middle">
+					<font size="16"/>
+				</textElement>
+				<text><![CDATA[APELLIDO]]></text>
+			</staticText>
+			<textField pattern="MMMMM dd, yyyy">
+				<reportElement x="560" y="5" width="100" height="30" uuid="1eee9aa5-b2b0-46e1-a223-6d1a2985eeb0"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+			<textField pattern="HH:mm">
+				<reportElement x="670" y="5" width="100" height="30" uuid="34c53ae4-06c7-43c7-82c6-f8de1dcba5c2"/>
+				<textFieldExpression><![CDATA[new java.util.Date()]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageHeader>
+	<detail>
+		<band height="38" splitType="Stretch">
+			<textField>
+				<reportElement x="70" y="0" width="100" height="30" uuid="bb3c85e1-cfb4-4739-b9a9-8d868616e6f9">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d8aa0912-4252-481e-96af-99f8551c20f7"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{actor_id}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="280" y="0" width="100" height="30" uuid="6ebf76f9-6ffa-4b74-a7de-6ef9660b33e3">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="d5504003-1df4-4434-9de9-9f130c2a89c2"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{first_name}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="560" y="0" width="100" height="30" uuid="4da9a3bc-457e-447f-9414-f1118fbb34dc">
+					<property name="com.jaspersoft.studio.spreadsheet.connectionID" value="e9a5ad12-2fec-4277-a047-6940982ae4c9"/>
+				</reportElement>
+				<textElement textAlignment="Center" verticalAlignment="Middle"/>
+				<textFieldExpression><![CDATA[$F{last_name}]]></textFieldExpression>
+			</textField>
+		</band>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="61" splitType="Stretch">
+			<textField>
+				<reportElement x="570" y="10" width="100" height="30" uuid="b22d1b37-3640-4ccb-b07e-86240edc8568"/>
+				<textElement textAlignment="Right"/>
+				<textFieldExpression><![CDATA["Page " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+			<textField evaluationTime="Report">
+				<reportElement x="680" y="10" width="100" height="30" uuid="e9dbf0ec-40b4-4c22-86d5-3cb8bfb1f4f3"/>
+				<textElement textAlignment="Left"/>
+				<textFieldExpression><![CDATA[" of " + $V{PAGE_NUMBER}]]></textFieldExpression>
+			</textField>
+		</band>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
